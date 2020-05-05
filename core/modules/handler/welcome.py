@@ -42,5 +42,6 @@ def init(update, context):
                 bot.send_message(update.message.chat_id,"{} imposta un username!\nSei stato kickato per sicurezza!"
                                  .format(update.message.from_user.id))
                 bot.kick_chat_member(update.message.chat_id,update.message.from_user.id)
+                bot.unban_chat_member(update.message.chat_id,update.message.from_user.id)
         else:
             bot.send_message(update.message.chat_id,str_service.BOT_WELCOME.format(update.message.chat.title))
