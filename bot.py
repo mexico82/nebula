@@ -98,7 +98,7 @@ def commandHandler(dsp):
     FUNCTION(CMH("exit", own.leave.init))
     FUNCTION(CMH("server", own.server.init))
     FUNCTION(CMH("setjoke", own.insert_joke.init))
-    #FUNCTION(CMH("test", own.test.init))
+    FUNCTION(CMH("test", own.test.init))
 
 #########################################################################
 #                           PLUGINS MODULES                             #
