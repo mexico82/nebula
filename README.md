@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/Qsdgosd.jpg" alt="Smiley face" height="500" width="500">
 </p>
 
-[![Python3.7+](https://img.shields.io/badge/Python-3.7%2B-green.svg)](https://www.python.org/downloads)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4988792a122f410bb6ef1bbca6c3d6ad)](https://www.codacy.com/gh/Squirrel-Network/nebula?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Infocom-Telegram-Community/nebula&amp;utm_campaign=Badge_Grade)
+[![Python3.7+](https://img.shields.io/badge/Python-3.7%2B-green.svg)](https://www.python.org/downloads)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4988792a122f410bb6ef1bbca6c3d6ad)](https://www.codacy.com/gh/Squirrel-Network/nebula?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Infocom-Telegram-Community/nebula&amp;utm_campaign=Badge_Grade)[![Group](https://img.shields.io/badge/Group-FurryDen-blue)](https://t.me/squirrelnetwork)
 
 ## How to start
 
