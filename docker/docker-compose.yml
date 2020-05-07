@@ -13,7 +13,7 @@ services:
             BOT_NAME: $BOT_NAME
             AUTHOR: $AUTHOR
             VERSION: $VERSION
-            SOURCE: $SOURCE
+            SOURCE: $REPOSITORY_URL
 
             STAFF_GROUP: $STAFF_GROUP
             ADMIN_ID: $ADMIN_ID
@@ -35,10 +35,9 @@ services:
         volumes:
             - bot_data:/opt/data:rw
         environment: 
-            REPOSITORY_URL: https://github.com/JervNorsk/nebula
-            REPOSITORY_BRANCH: portainer/devel
-            COMPOSE_FILE: docker/docker-compose.yml
-            SSH_PASSWORD: 1234
+            REPOSITORY_URL: $REPOSITORY_URL
+            REPOSITORY_BRANCH: $REPOSITORY_BRANCH
+            SSH_PASSWORD: $AGENT_SSH_PASSWORD
 
 networks:
     bot_net:
