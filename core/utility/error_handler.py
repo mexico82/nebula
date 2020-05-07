@@ -1,11 +1,12 @@
 import sys
 import traceback
+from config import Config
 from telegram.utils.helpers import mention_html
 
 #ERROR HANDLER 2.0
 def error(update, context):
     # add all the dev user_ids in this list. You can also add ids of channels or groups.
-    devs = [1065189838]
+    devs = Config.OWNER
 
     trace = "".join(traceback.format_tb(sys.exc_info()[2]))
     # lets try to get as much information from the telegram update as possible

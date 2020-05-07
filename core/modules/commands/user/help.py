@@ -1,11 +1,9 @@
-from config import Config
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 def init(update, context):
-    bot = context.bot
-    help_message = "@{} HELP:\n\nWELCOME SETTINGS:\n"\
-                   "<code>/setwelcome set the welcome for your group</code>\n"\
-                   "<code>/listwelcome	watch your welcome by group</code>\n"\
-                   "<code>/updatewelcome	update your welcome by group</code>\n"\
-                   "<code>/add BUTTON,example.com	add button into welcome</code>\n"\
-                   "<code>/listbutton	remove and see the welcome buttons</code>"
-    bot.send_message(update.message.chat_id,help_message.format(bot.username), parse_mode='HTML')
+  bot = context.bot
+  chat = update.effective_chat
+  if chat.type != chat.PRIVATE:
+    update.effective_message.reply_text("Contact me in PM to get the list of possible commands.",
+    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Help",url="t.me/{}?start=help".format(bot.username))]]))
+    return

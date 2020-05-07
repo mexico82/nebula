@@ -98,7 +98,7 @@ def commandHandler(dsp):
     FUNCTION(CMH("exit", own.leave.init))
     FUNCTION(CMH("server", own.server.init))
     FUNCTION(CMH("setjoke", own.insert_joke.init))
-    FUNCTION(CMH("test", own.test.init))
+    #FUNCTION(CMH("test", own.test.init))
 
 #########################################################################
 #                           PLUGINS MODULES                             #
@@ -116,6 +116,8 @@ def commandHandler(dsp):
 def callbackQueryHandler(dsp):
     FUNCTION = dsp.add_handler
     FUNCTION(CQH(handler.admin_command.resolved, pattern='resolved'))
+    FUNCTION(CQH(usr.start.welcome_button, pattern='welcome_button'))
+    FUNCTION(CQH(usr.start.back_button, pattern='back_button'))
 
 #########################################################################
 #                              MAIN_HANDLER                             #

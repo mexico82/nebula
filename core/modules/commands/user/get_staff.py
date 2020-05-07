@@ -1,5 +1,5 @@
 import core.decorators
-from telegram.utils.helpers import escape_markdown, mention_html
+from telegram.utils.helpers import escape_markdown
 from telegram import ParseMode
 
 @core.decorators.public_command.init
