@@ -34,10 +34,13 @@ services:
             - bot_net
         volumes:
             - bot_data:/opt/data:rw
+            - ../:/opt/data/local:rw
         environment: 
-            REPOSITORY_URL: $REPOSITORY_URL
-            REPOSITORY_BRANCH: $REPOSITORY_BRANCH
             SSH_PASSWORD: $AGENT_SSH_PASSWORD
+            #REPOSITORY_URL: $REPOSITORY_URL
+            #REPOSITORY_BRANCH: $REPOSITORY_BRANCH
+            REPOSITORY_VOLUME: /opt/data/local
+            DEBUG: enable
 
 networks:
     bot_net:

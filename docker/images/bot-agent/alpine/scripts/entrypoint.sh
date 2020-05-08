@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if [ -n "$DEBUG" ]
 then
@@ -7,25 +7,33 @@ fi
 
 touch "/opt/data/agent.lock"
 
-if [ -n "$REPOSITORY_URL" ]
-then
-    echo "Check repository from $REPOSITORY_URL"
-    if [ ! -d /opt/data ] || [ ! "$(ls -A /opt/data/repository)" ]
+function updateRepository
+{
+    if [ -n "$REPOSITORY_URL" ]
     then
-        if [ -n $REPOSITORY_BRANCH ]
+        echo "Check repository from $REPOSITORY_URL"
+        if [ ! -d /opt/data ] || [ ! "$(ls -A /opt/data/repository)" ]
         then
-            REPOSITORY_URL="-b $REPOSITORY_BRANCH $REPOSITORY_URL"
-        fi
+            if [ -n $REPOSITORY_BRANCH ]
+            then
+                REPOSITORY_URL="-b $REPOSITORY_BRANCH $REPOSITORY_URL"
+            fi
 
-        git clone $REPOSITORY_URL /opt/data/repository
-    else 
-        cd /opt/data/repository
-        git pull
-        cd - > /dev/null
+            git clone $REPOSITORY_URL /opt/data/repository
+        else 
+            cd /opt/data/repository
+            git pull
+            cd - > /dev/null
+        fi
+    elif [ -n "$REPOSITORY_VOLUME" ]
+    then
+        #mkdir /opt/data/repository -p
+        cp $REPOSITORY_VOLUME/. /opt/data/repository/ -ruv
+    elif [ ! -d /opt/data/repository ] || [ ! "$(ls -A /opt/data/repository)" ]
+    then
+        exit 500
     fi
-else
-    exit 500
-fi
+}
 
 echo "Configuring root"
 chsh --shell /bin/bash root
@@ -39,7 +47,7 @@ then
     usermod -p `openssl passwd $SSH_PASSWORD` root
 fi
 
-rm "/opt/data/agent.lock"
+updateRepository
 
 if [ $# -gt 0 ]
 then
@@ -49,7 +57,18 @@ fi
 echo "Agent IP Address:"
 ip route get 8.8.8.8 | sed -n 's|^.*src \(.*\)$|\1|gp' | awk '{print $1}'
 
-while "true"
-do
-    sleep 3600
-done
+rm "/opt/data/agent.lock"
+
+if [ -n $REPOSITORY_VOLUME ]
+then
+    while inotifywait -e modify -r $REPOSITORY_VOLUME
+    do
+        updateRepository
+    done
+else
+    while "true"
+    do
+        echo "Update not supported yet!"
+        sleep 3600
+    done
+fi
