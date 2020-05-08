@@ -25,10 +25,10 @@ function updateRepository
             git pull
             cd - > /dev/null
         fi
-    elif [ -n "$REPOSITORY_VOLUME" ]
+    elif [ -n "$LOCAL_VOLUME" ]
     then
         #mkdir /opt/data/repository -p
-        cp $REPOSITORY_VOLUME/. /opt/data/repository/ -ruv
+        cp /opt/data/local/. /opt/data/repository/ -ruv
     elif [ ! -d /opt/data/repository ] || [ ! "$(ls -A /opt/data/repository)" ]
     then
         exit 500
@@ -59,9 +59,9 @@ ip route get 8.8.8.8 | sed -n 's|^.*src \(.*\)$|\1|gp' | awk '{print $1}'
 
 rm "/opt/data/agent.lock"
 
-if [ -n $REPOSITORY_VOLUME ]
+if [ -n $LOCAL_VOLUME ]
 then
-    while inotifywait -e modify -r $REPOSITORY_VOLUME
+    while inotifywait -e modify -r /opt/data/local
     do
         updateRepository
     done

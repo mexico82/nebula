@@ -37,10 +37,11 @@ services:
             - ../:/opt/data/local:rw
         environment: 
             SSH_PASSWORD: $AGENT_SSH_PASSWORD
-            #REPOSITORY_URL: $REPOSITORY_URL
-            #REPOSITORY_BRANCH: $REPOSITORY_BRANCH
-            REPOSITORY_VOLUME: /opt/data/local
-            DEBUG: enable
+
+            REPOSITORY_URL: $REPOSITORY_URL
+            REPOSITORY_BRANCH: $REPOSITORY_BRANCH
+
+            LOCAL_VOLUME: $LOCAL_VOLUME
 
 networks:
     bot_net:
