@@ -34,3 +34,6 @@ def init(update, context):
         bot.send_message(update.message.chat_id,
                          text="<b>Attenzione devi specificare il motivo del ban!</b>",
                          parse_mode='HTML')
+
+def new(update, context):
+    bot = context.bot

@@ -67,7 +67,7 @@ def commandHandler(dsp):
 #                   Source: /core/decorators/admin.py                   #
 #                                                                       #
 #########################################################################
-    FUNCTION(CMH("ban", adm.ban.init))
+    FUNCTION(CMH("ban", adm.ban.new))
     FUNCTION(CMH("superban", adm.superban.init))
     FUNCTION(CMH("silence", adm.silence.init))
     FUNCTION(CMH("unsilence", adm.unsilence.init))
