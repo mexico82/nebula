@@ -16,15 +16,17 @@ def init(update, context):
         if not member.is_bot:
             if member.username is not None:
                 connector = Connection()
+                usr_connector = Connection()
                 chatid = str(update.message.chat_id)
                 u_id = str(member.id)
                 u_username = str("@"+member.username)
                 query = Sql_Welcome.SQL
                 save_user = Sql_SaveUser.SQL
                 connector.cur.execute(query,[chatid])
-                connector.cur.execute(save_user,[u_id,u_username])
+                usr_connector.cur.execute(save_user,[u_id,u_username])
                 row = connector.cur.fetchone()
                 if row is not None:
+                    print("STATO WELCOME NEL DATABASE")
                     parsed_message = row[0].replace('{first_name}',
                     update.message.from_user.first_name).replace('{chat_name}',
                     update.message.chat.title).replace('{username}',
@@ -40,6 +42,7 @@ def init(update, context):
                     welcome_message = "{}".format(parsed_message)
                     update.message.reply_text(welcome_message, reply_markup=InlineKeyboardMarkup(menu), parse_mode='HTML')
                 else:
+                    print("STATO WELCOME NON NEL DATABASE")
                     bot.send_message(update.message.chat_id, str_service.DEFAULT_WELCOME.format(username="@"+member.username,chat=update.message.chat.title))
 
             else:
