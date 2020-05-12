@@ -5,7 +5,7 @@ from telegram.ext.dispatcher import run_async
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from core.utility import utils
 from core.sql.db_connect import Connection
-from core.sql.handler_sql import Sql_Welcome
+from core.sql.handler_sql import Sql_Welcome,Sql_SaveUser
 from core.sql.commands_sql import Sql_Buttons
 from core.utility.strings import str_service
 
@@ -16,9 +16,14 @@ def init(update, context):
         if not member.is_bot:
             if member.username is not None:
                 connector = Connection()
+                usr_connector = Connection()
                 chatid = str(update.message.chat_id)
+                u_id = str(member.id)
+                u_username = str("@"+member.username)
                 query = Sql_Welcome.SQL
+                save_user = Sql_SaveUser.SQL
                 connector.cur.execute(query,[chatid])
+                usr_connector.cur.execute(save_user,[u_id,u_username])
                 row = connector.cur.fetchone()
                 if row is not None:
                     parsed_message = row[0].replace('{first_name}',
