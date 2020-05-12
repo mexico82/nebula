@@ -54,8 +54,8 @@ then
     exec "$@"
 fi
 
-echo "Agent IP Address:"
-ip route get 8.8.8.8 | sed -n 's|^.*src \(.*\)$|\1|gp' | awk '{print $1}'
+IP=$(ip route get 8.8.8.8 | sed -n 's|^.*src \(.*\)$|\1|gp' | awk '{print $1}')
+echo "Service IP Address: $IP"
 
 rm "/opt/data/agent.lock"
 
