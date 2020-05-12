@@ -13,7 +13,8 @@ __all__ = [
            "weather",
            "define",
            "joke",
-           "get_staff"
+           "get_staff",
+           "gdpr"
            ]
 
 from core.modules.commands.user import *

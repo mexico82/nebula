@@ -24,3 +24,5 @@ class Sql_Rules:
     SQL = "SELECT rules_text FROM rules_table WHERE id_group = %s"
 class Sql_Insert_Rules:
     SQL = "INSERT INTO rules_table(rules_text, id_group) VALUES (%s,%s)"
+class Sql_GDPR:
+    SQL = "DELETE FROM users WHERE user_id = %s"
