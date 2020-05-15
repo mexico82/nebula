@@ -89,6 +89,8 @@ def commandHandler(dsp):
     FUNCTION(CMH("delete", adm.delete_command.init))
     FUNCTION(CMH("setrules", adm.set_rules.init))
     FUNCTION(CMH("badlist", adm.list_badwords.init))
+    FUNCTION(CMH("warn", adm.warn.init))
+    FUNCTION(CMH("unwarn", adm.unwarn.init))
 
 #########################################################################
 #                           OWNER COMMAND                               #

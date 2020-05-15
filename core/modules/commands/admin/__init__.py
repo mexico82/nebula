@@ -18,6 +18,8 @@ __all__ = ["mute",
            "delete_command",
            "superban",
            "set_rules",
-           "list_badwords"]
+           "list_badwords",
+           "warn",
+           "unwarn"]
 
 from core.modules.commands.admin import *

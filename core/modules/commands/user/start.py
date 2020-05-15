@@ -31,7 +31,7 @@ def admin_command(update,context):
                    "<code>/mute	mute the user</code>\n"\
                    "<code>/unmute unmute the user</code>\n"\
                    "<code>/kick	kick the user</code>\n"\
-                   "<code>/setpin [text] set pin message by bot</code>"\
+                   "<code>/setpin [text] set pin message by bot</code>\n"\
                    "<code>/pin pin message by bot</code>"
     keyboard = [[InlineKeyboardButton("Back", callback_data='back_button')]]
     reply_markup = InlineKeyboardMarkup(keyboard)

@@ -9,3 +9,8 @@ MESSAGE_SB = "Devi specificare un motivo per il SuperBan!"
 RULES_MESSAGE = "Non hai impostato nessun <b>regolamento</b> per questa chat!\nUtilizza il comando /setrules per impostare il regolamento."
 RULES_HELP = "Devi inserire un testo! non può essere vuoto!"
 BUTTONS_INSERT = "Non puoi inserire bottoni vuoti!\nFormato per inserire i bottoni: /add NOMEBOTTONE,url\nESEMPIO: <code>/add CIAO,https://google.it</code>"
+#### WARN TEXT ####
+WARN_START = "L'utente {} è stato inserito nel database con 1 Warn"
+WARN_1 = "{} Sei stato warnato 1 volta"
+WARN_2 = "{} Sei stato warnato 2 volte"
+WARN_END = "{} è stato bannato dopo 3 warn"
