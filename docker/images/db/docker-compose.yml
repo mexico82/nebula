@@ -4,4 +4,4 @@ services:
   latest:
     image: squirrelnet/nebula-db:latest
     build:
-      context: alpine
+      context: mysql

@@ -59,7 +59,7 @@ echo "Service IP Address: $IP"
 
 rm "/opt/data/agent.lock"
 
-if [ -n $LOCAL_VOLUME ]
+if [ -n "$LOCAL_VOLUME" ]
 then
     while inotifywait -e modify -r /opt/data/local
     do

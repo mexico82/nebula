@@ -4,7 +4,6 @@ from telegram import User
 from telegram.ext.dispatcher import run_async
 
 from cli._ext.argparse import ArgumentParser
-from core.sql.db_connect import Connection
 from core.sql.database import DatabaseAccessor
 
 @core.decorators.admin.user_admin
@@ -55,7 +54,6 @@ def init(update, context):
     if ban(bot, chat, admin, user, options):
         if update.message.reply_to_message:
             bot.delete_message(chat.id, update.message.reply_to_message.message_id)
-    1
 
 def ban(bot, chat, admin, user, options):
     if not user:
@@ -94,7 +92,7 @@ def ban(bot, chat, admin, user, options):
     motivation = ' '.join(str(x) for x in options.motivation)
 
     chat.kick_member(user.id)
-    bot.send_message( admin.id,
+    chat.send_message(
         text="{user} è stato <b>bannato</b> da {chat}\n" \
             "per il seguente motivo: {motivation}"
             .format(
