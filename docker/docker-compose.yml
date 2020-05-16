@@ -1,14 +1,14 @@
 version: '3.7'
 
-services: 
+services:
     bot:
         image: squirrelnet/nebula
-        networks: 
+        networks:
             - bot_net
             - db_net
         volumes:
             - bot_data:/opt/data:rw
-        environment: 
+        environment:
             BOT_API: $BOT_API
             BOT_USER: $BOT_USER
             BOT_NAME: $BOT_NAME
@@ -31,26 +31,31 @@ services:
 
     bot_agent:
         image: squirrelnet/nebula-agent
-        depends_on: 
+        depends_on:
             - db
-        networks: 
+        networks:
             - bot_net
         volumes:
             - bot_data:/opt/data:rw
-            - ../:/opt/data/local:rw
-        environment: 
-            LOCAL_VOLUME: $LOCAL_VOLUME
+            # - ../:/opt/data/local:rw
+        environment:
+            # LOCAL_VOLUME: $LOCAL_VOLUME
             SSH_PASSWORD: $AGENT_SSH_PASSWORD
 
             REPOSITORY_URL: $REPOSITORY_URL
             REPOSITORY_BRANCH: $REPOSITORY_BRANCH
-    
+
     db:
         image: squirrelnet/nebula-db
         networks:
             - db_net
         volumes:
             - db_data:/opt/data
+        deploy:
+            mode: replicated
+            replicas: $DATABASE_REPLICAS
+            restart_policy:
+                condition: on-failure
         environment:
             DATABASE_NAME: $DATABASE_NAME
             DATABASE_USERNAME: $DATABASE_USERNAME
@@ -60,6 +65,11 @@ services:
         image: squirrelnet/nebula-db-dashboard
         networks:
             - db_net
+        deploy:
+            mode: replicated
+            replicas: $DATABASE_DASHBOARD_REPLICAS
+            restart_policy:
+                condition: on-failure
         environment:
             DATABASE_SERVER: $DATABASE_SERVER
             DATABASE_USERNAME: $DATABASE_USERNAME
