@@ -15,7 +15,7 @@ do
     sleep 1
     TIME=$(expr $TIME + 1)
 
-    if [[ "$TIME" == "15" ]]
+    if [[ "$TIME" == "300" ]]
     then
         exit 500
     fi

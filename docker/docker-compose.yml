@@ -5,6 +5,7 @@ services:
         image: squirrelnet/nebula
         networks: 
             - bot_net
+            - db_net
         volumes:
             - bot_data:/opt/data:rw
         environment: 
@@ -30,17 +31,44 @@ services:
 
     bot_agent:
         image: squirrelnet/nebula-agent
+        depends_on: 
+            - db
         networks: 
             - bot_net
         volumes:
             - bot_data:/opt/data:rw
+            - ../:/opt/data/local:rw
         environment: 
+            LOCAL_VOLUME: $LOCAL_VOLUME
+            SSH_PASSWORD: $AGENT_SSH_PASSWORD
+
             REPOSITORY_URL: $REPOSITORY_URL
             REPOSITORY_BRANCH: $REPOSITORY_BRANCH
-            SSH_PASSWORD: $AGENT_SSH_PASSWORD
+    
+    db:
+        image: squirrelnet/nebula-db
+        networks:
+            - db_net
+        volumes:
+            - db_data:/opt/data
+        environment:
+            DATABASE_NAME: $DATABASE_NAME
+            DATABASE_USERNAME: $DATABASE_USERNAME
+            DATABASE_PASSWORD: $DATABASE_PASSWORD
+
+    db-dashboard:
+        image: squirrelnet/nebula-db-dashboard
+        networks:
+            - db_net
+        environment:
+            DATABASE_SERVER: $DATABASE_SERVER
+            DATABASE_USERNAME: $DATABASE_USERNAME
+            DATABASE_PASSWORD: $DATABASE_PASSWORD
 
 networks:
     bot_net:
+    db_net:
 
 volumes:
     bot_data:
+    db_data:

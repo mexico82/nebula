@@ -9,6 +9,8 @@ RUN apt-get install -y \
             git
 RUN apt-get install -y \
             iproute2
+RUN apt-get install -y \
+            inotify-tools
 
 RUN mkdir /opt/data -p
 COPY scripts/ /opt/scripts
