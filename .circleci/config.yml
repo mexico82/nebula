@@ -21,6 +21,8 @@ jobs:
           command: |
             docker-compose -f docker/images/bot/docker-compose.yml build
             docker-compose -f docker/images/bot-agent/docker-compose.yml build
+            docker-compose -f docker/images/db/docker-compose.yml build
+            docker-compose -f docker/images/db-dashboard/docker-compose.yml build
       - run:
           name: Login on Docker Hub
           command: echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
@@ -30,3 +32,5 @@ jobs:
             docker images
             docker-compose -f docker/images/bot/docker-compose.yml push
             docker-compose -f docker/images/bot-agent/docker-compose.yml push
+            docker-compose -f docker/images/db/docker-compose.yml push
+            docker-compose -f docker/images/db-dashboard/docker-compose.yml push
