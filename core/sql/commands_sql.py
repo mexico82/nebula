@@ -26,3 +26,8 @@ class Sql_Insert_Rules:
     SQL = "INSERT INTO rules_table(rules_text, id_group) VALUES (%s,%s)"
 class Sql_GDPR:
     SQL = "DELETE FROM users WHERE user_id = %s"
+class Sql_Warn:
+    SQL_Ins_Warn = "INSERT INTO warns(user_id,warn_count,id_group) VALUES (%s,%s,%s)"
+    SQL_Sel_Warn = "SELECT warn_count FROM warns WHERE user_id = %s  AND id_group = %s"
+    SQL_Upd_Warn = "UPDATE warns SET warn_count = warn_count + 1 WHERE user_id = %s  AND id_group = %s"
+    SQL_Del_Warn = "DELETE FROM warns WHERE user_id = %s AND id_group = %s"

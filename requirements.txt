@@ -15,6 +15,7 @@ packaging==20.1
 pluggy==0.13.1
 psutil==5.6.7
 py==1.8.1
+pyCLI==2.0.3
 pycparser==2.19
 pyowm==2.10.0
 pyparsing==2.4.6
