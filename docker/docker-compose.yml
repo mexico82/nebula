@@ -67,7 +67,7 @@ services:
             - db_net
         deploy:
             mode: replicated
-            replicas: $DATABASE_DASHBOARD_REPLICAS
+            replicas: $DATABASE_REPLICAS
             restart_policy:
                 condition: on-failure
         environment:
