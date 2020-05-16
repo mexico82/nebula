@@ -15,7 +15,7 @@ def init(update, context):
     message = str(update.message.text[9:])
     if message != "":
         save_user_id=update.message.reply_to_message.from_user.id
-        save_date = datetime.strftime(datetime.today(), '%H:%M del %d/%m/%Y')
+        save_date = datetime.strftime(datetime.today(), "%Y-%m-%d"+" "+"%H:%M:%S")
         connector = Connection()
         query= Sql_Superban.SQL
         connector.cur.execute(query, [save_user_id,message,save_date])

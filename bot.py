@@ -60,6 +60,7 @@ def commandHandler(dsp):
     FUNCTION(CMH("wikipedia", usr.define.init))
     FUNCTION(CMH("joke", usr.joke.init))
     FUNCTION(CMH("staff", usr.get_staff.init))
+    FUNCTION(CMH("gdpr", usr.gdpr.init))
 
 #########################################################################
 #                           ADMIN COMMAND                               #
