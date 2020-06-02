@@ -4,3 +4,4 @@ ERROR_MESSAGE="Non puoi mandare una segnalazione senza alcun messaggio!\nIl form
 MSG_ANNOUNCEMENT="<b>Annuncio:</b>\n{}"
 HELP_ANNOUNCEMENT="Non puoi mandare un annuncio vuoto!"
 SILENCE_MESSAGE = "<b>Attenzione Silenzio Globale Attivato!\nTutti gli utenti sono stati silenziati!\n</b>Tutti i messaggi sono stati bloccati!"
+UNSILENCE_MESSAGE = "<b>Silenzio Globale Disattivato!\n</b>Gli utenti possono tornare regolarmente a scrivere!"
