@@ -13,5 +13,5 @@ class DatabaseAccessor:
 
         if username:
             SQL = SQL % ("user_nickname = '%s'" % username)
-        
+
         return self.exec(SQL)
