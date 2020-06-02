@@ -71,7 +71,6 @@ def commandHandler(dsp):
     FUNCTION(CMH("ban", adm.ban.init))
     FUNCTION(CMH("superban", adm.superban.init))
     FUNCTION(CMH("silence", adm.silence.init))
-    FUNCTION(CMH("unsilence", adm.unsilence.init))
     FUNCTION(CMH("badword", adm.insert_bad_words.init))
     FUNCTION(CMH("kick", adm.kick.init))
     FUNCTION(CMH("info", adm.get.init))
@@ -118,6 +117,7 @@ def commandHandler(dsp):
 #########################################################################
 def callbackQueryHandler(dsp):
     FUNCTION = dsp.add_handler
+    FUNCTION(CQH(adm.silence.unsilence_button, pattern='unsilence_button'))
     FUNCTION(CQH(handler.admin_command.resolved, pattern='resolved'))
     FUNCTION(CQH(usr.start.welcome_button, pattern='welcome_button'))
     FUNCTION(CQH(usr.start.admin_command, pattern='admin_command'))
