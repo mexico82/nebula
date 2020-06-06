@@ -20,6 +20,8 @@ def init(update, context):
         query= Sql_Superban.SQL
         connector.cur.execute(query, [save_user_id,message,save_date])
         connector.db.commit()
+        bot.delete_message(update.message.chat_id, update.message.reply_to_message.message_id)
+        bot.kick_chat_member(update.message.chat_id, update.message.reply_to_message.from_user.id)
         bot.send_message(update.message.chat_id,
                          text="Hai SUPERBANNATO {id}"
                          .format(id=update.message.reply_to_message.from_user.id),

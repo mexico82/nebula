@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 # Copyright hersel91 <hersel1991@gmail.com>
 # Copyright SteelManIta
+# Copyright JervNorsk
 
 
 # Python import for error handler and logging
 import logging
+import sys
 from datetime import datetime
 from core.utility import error_handler
 
@@ -22,6 +24,12 @@ from telegram.ext import (
 import plugins
 from config import Config
 from core.modules import commands,handler
+
+# if version < 3.6, stop bot.
+LOGGER = logging.getLogger(__name__)
+if sys.version_info[0] < 3 or sys.version_info[1] < 6:
+    LOGGER.error("You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting.")
+    quit(1)
 
 # Commands Variables
 # @param usr = user commands
