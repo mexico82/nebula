@@ -6,6 +6,7 @@ from telegram.ext.dispatcher import run_async
 
 #SuperBan
 @core.decorators.bot_admin.bot_admin
+@core.decorators.public_command.init
 @run_async
 def init(update, context):
     bot = context.bot
@@ -21,7 +22,4 @@ def init(update, context):
             text="<b>The superban has banned:</b> <code>{id}!</code>".format(id=update.message.from_user.id),
             parse_mode='HTML')
         bot.delete_message(chat, update.message.message_id)
-        bot.kick_chat_member(chat,
-                         update.message.from_user.id)
-    elif ban_user in Config.ADMIN_ID:
-        bot.send_message(chat, text="I can't ban an admin who is in the admin's list!")
+        bot.kick_chat_member(chat,update.message.from_user.id)
