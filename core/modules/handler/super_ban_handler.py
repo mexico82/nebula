@@ -6,7 +6,6 @@ from telegram.ext.dispatcher import run_async
 
 #SuperBan
 @core.decorators.bot_admin.bot_admin
-@core.decorators.public_command.init
 @run_async
 def init(update, context):
     bot = context.bot
