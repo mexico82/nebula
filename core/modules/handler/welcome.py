@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Copyright hersel91 <hersel1991@gmail.com>
+import time
 from telegram.ext.dispatcher import run_async
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from core.utility import utils
@@ -8,6 +9,7 @@ from core.sql.db_connect import Connection
 from core.sql.handler_sql import Sql_Welcome,Sql_SaveUser
 from core.sql.commands_sql import Sql_Buttons
 from core.utility.strings import str_service
+
 
 @run_async
 def init(update, context):
@@ -44,9 +46,8 @@ def init(update, context):
                     bot.send_message(update.message.chat_id, str_service.DEFAULT_WELCOME.format(username="@"+member.username,chat=update.message.chat.title))
 
             else:
-                bot.send_message(update.message.chat_id,"{} imposta un username!\nSei stato kickato per sicurezza!"
+                bot.send_message(update.message.chat_id,"{} set a username!\n You were kicked for safety!"
                                  .format(update.message.from_user.id))
-                bot.kick_chat_member(update.message.chat_id,update.message.from_user.id)
-                bot.unban_chat_member(update.message.chat_id,update.message.from_user.id)
+                bot.kick_chat_member(update.message.chat_id, update.message.from_user.id,until_date=int(time.time()+30))
         else:
             bot.send_message(update.message.chat_id,str_service.BOT_WELCOME.format(update.message.chat.title))
