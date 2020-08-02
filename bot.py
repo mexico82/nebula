@@ -77,6 +77,7 @@ def commandHandler(dsp):
 #                                                                       #
 #########################################################################
     FUNCTION(CMH("ban", adm.ban.init))
+    FUNCTION(CMH("unban",adm.unban.init))
     FUNCTION(CMH("superban", adm.superban.init))
     FUNCTION(CMH("silence", adm.silence.init))
     FUNCTION(CMH("badword", adm.insert_bad_words.init))

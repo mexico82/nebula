@@ -47,7 +47,7 @@ def admin_command(update,context):
     query.edit_message_text(help_message,reply_markup=reply_markup,parse_mode='HTML')
 
 def user_command(update,context):
-    help_message = "LIST ADMIN COMMANDS:\n"\
+    help_message = "LIST USER COMMANDS:\n"\
                    "<b>[text] = text to insert , Example: /wikipedia New York</b>\n"\
                    "<code>/wikipedia [text] wikipedia</code>\n"\
                    "<code>/distro random Linux Distro by DistroWatch</code>\n"\

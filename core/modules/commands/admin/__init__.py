@@ -1,6 +1,7 @@
 __all__ = ["mute",
            "unmute",
            "ban",
+           "unban",
            "pin",
            "say",
            "announcement",
