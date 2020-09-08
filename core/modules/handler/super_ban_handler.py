@@ -18,7 +18,8 @@ def init(update, context):
     rows = connector.cur.fetchall()
     if rows:
         bot.send_message(chat,
-            text="<b>The superban has banned:</b> <code>{id}!</code>".format(id=update.message.from_user.id),
+            text="<b>The superban has banned:</b> <code>{id}!</code>\n" 
+            "Open https://hersel.it/apinebula.php".format(id=update.message.from_user.id),
             parse_mode='HTML')
         bot.delete_message(chat, update.message.message_id)
         bot.kick_chat_member(chat,update.message.from_user.id)

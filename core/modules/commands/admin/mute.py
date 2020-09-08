@@ -12,7 +12,7 @@ def init(update, context):
     bot = context.bot
     var_message = update.message.text[5:]
     if var_message != "":
-        bot.restrict_chat_member(update.message.chat_id,
+        bot.restrict_chat_member(update.effective_chat.id,
                                 update.message.reply_to_message.from_user.id,
                                 ChatPermissions(
         can_send_messages=False,
@@ -29,5 +29,6 @@ def init(update, context):
                 , parse_mode='HTML')
     else:
         bot.send_message(update.message.chat_id,
-                         text="<b>Attenzione devi specificare il motivo del muta!</b>",
+                         text="<b>Attenzione devi specificare una motivazione per il comando</b>"\
+                         "<code>/muta</code>\n Il formato corretto è <code>/muta motivo</code>",
                          parse_mode='HTML')

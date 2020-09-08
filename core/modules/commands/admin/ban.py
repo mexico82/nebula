@@ -96,7 +96,7 @@ def ban(bot, chat, admin, user, options):
         text="{user} è stato <b>bannato</b> da {chat}\n" \
             "per il seguente motivo: {motivation}"
             .format(
-                user=user.username,
+                user=user.username or user.first_name,
                 chat=chat.title,
                 motivation=motivation
             ),
@@ -108,7 +108,7 @@ def ban(bot, chat, admin, user, options):
             "GRUPPO: {chat}\n"\
             "MOTIVO: {motivation}"
             .format(
-                username=user.first_name,
+                username=user.username or user.first_name,
                 id=user.id,
                 chat=chat.title,
                 motivation=motivation

@@ -5,7 +5,6 @@ __all__ = ["main_handler",
            "custom_handler",
            "delete_buttons",
            "super_ban_handler",
-           "non_latin_handler",
            "debug_terminal",
            "filters_handler"
            ]
