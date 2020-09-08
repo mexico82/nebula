@@ -1,5 +1,6 @@
 import core.decorators
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
 MASTER_KEYBOARD = [[
     InlineKeyboardButton("Welcome Help", callback_data='welcome_button'),
     InlineKeyboardButton("Admin Commands", callback_data='admin_command'),

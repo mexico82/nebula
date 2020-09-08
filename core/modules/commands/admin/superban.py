@@ -24,9 +24,9 @@ def init(update, context):
         bot.delete_message(update.message.chat_id, update.message.reply_to_message.message_id)
         bot.kick_chat_member(update.message.chat_id, update.message.reply_to_message.from_user.id)
         bot.send_message(update.message.chat_id,
-                         text="Hai SUPERBANNATO {id}"
+                         text="You got super banned <code>{id}</code> !!!\n Go to "
                          .format(id=update.message.reply_to_message.from_user.id),
-                         parse_mode='HTML')               
+                         parse_mode='HTML')
     else:
         bot.send_message(update.message.chat_id,str_service.MESSAGE_SB,
                          parse_mode='HTML')
