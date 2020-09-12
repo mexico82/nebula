@@ -9,6 +9,6 @@ class Sql_Welcome:
 class Sql_Custom_Handler:
     SQL = "SELECT answer_text FROM answers WHERE question_text = %s AND id_group = %s"
 class Sql_Super_Ban:
-    SQL = "SELECT * FROM ban_table WHERE InStr(%s,user_id) <> 0"
+    SQL = "SELECT * FROM superban_table WHERE InStr(%s,user_id) <> 0"
 class Sql_SaveUser:
     SQL = "INSERT IGNORE INTO users(user_id, user_nickname) VALUES (%s,%s)"

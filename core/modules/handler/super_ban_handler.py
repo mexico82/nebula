@@ -10,7 +10,7 @@ from telegram.ext.dispatcher import run_async
 def init(update, context):
     bot = context.bot
     connector = Connection()
-    chat = update.message.chat_id
+    chat = update.effective_chat.id
     ban_user = str(update.effective_user.id)
     query = Sql_Super_Ban.SQL
     connector.cur.execute(query, [ban_user])
@@ -18,7 +18,7 @@ def init(update, context):
     rows = connector.cur.fetchall()
     if rows:
         bot.send_message(chat,
-            text="<b>The superban has banned:</b> <code>{id}!</code>\n" 
+            text="<b>The superban has banned:</b> <code>{id}!</code>\n"
             "Open https://hersel.it/apinebula.php".format(id=update.message.from_user.id),
             parse_mode='HTML')
         bot.delete_message(chat, update.message.message_id)

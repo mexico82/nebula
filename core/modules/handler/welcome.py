@@ -10,10 +10,10 @@ from core.sql.handler_sql import Sql_Welcome,Sql_SaveUser
 from core.sql.commands_sql import Sql_Buttons
 from core.utility.strings import str_service
 
-
 @run_async
 def init(update, context):
     bot = context.bot
+    chat = update.effective_chat.id
     for member in update.message.new_chat_members:
         if not member.is_bot:
             if member.username is not None:
@@ -43,11 +43,11 @@ def init(update, context):
                     welcome_message = "{}".format(parsed_message)
                     update.message.reply_text(welcome_message, reply_markup=InlineKeyboardMarkup(menu), parse_mode='HTML')
                 else:
-                    bot.send_message(update.message.chat_id, str_service.DEFAULT_WELCOME.format(username="@"+member.username,chat=update.message.chat.title))
+                    bot.send_message(chat, str_service.DEFAULT_WELCOME.format(username="@"+member.username,chat=update.message.chat.title))
 
             else:
-                bot.send_message(update.message.chat_id,"{} set a username!\n You were kicked for safety!"
+                bot.send_message(chat,"{} set a username!\n You were kicked for safety!"
                                  .format(update.message.from_user.id))
-                bot.kick_chat_member(update.message.chat_id, update.message.from_user.id,until_date=int(time.time()+30))
+                bot.kick_chat_member(chat, update.message.from_user.id,until_date=int(time.time()+30))
         else:
-            bot.send_message(update.message.chat_id,str_service.BOT_WELCOME.format(update.message.chat.title))
+            bot.send_message(chat,str_service.BOT_WELCOME.format(update.message.chat.title))

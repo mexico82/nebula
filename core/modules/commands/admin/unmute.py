@@ -3,7 +3,6 @@ from config import Config
 from telegram.ext.dispatcher import run_async
 from telegram import ChatPermissions
 
-#FUNZIONE SMUTA
 @core.decorators.admin.user_admin
 @core.decorators.bot_admin.bot_admin
 @run_async

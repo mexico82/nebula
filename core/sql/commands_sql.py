@@ -19,7 +19,7 @@ class Sql_Buttons:
     SQL_1 = "SELECT * FROM urls WHERE id_group = %s"
     SQL_2 = "DELETE FROM urls WHERE id=(%s) AND id_group = %s"
 class Sql_Superban:
-    SQL = "INSERT IGNORE INTO ban_table(user_id, motivation_text, user_date) VALUES (%s,%s,%s)"
+    SQL = "INSERT IGNORE INTO superban_table(user_id, motivation_text, user_date, id_operator) VALUES (%s,%s,%s,%s)"
 class Sql_Rules:
     SQL = "SELECT rules_text FROM rules_table WHERE id_group = %s"
 class Sql_Insert_Rules:
@@ -31,3 +31,7 @@ class Sql_Warn:
     SQL_Sel_Warn = "SELECT warn_count FROM warns WHERE user_id = %s  AND id_group = %s"
     SQL_Upd_Warn = "UPDATE warns SET warn_count = warn_count + 1 WHERE user_id = %s  AND id_group = %s"
     SQL_Del_Warn = "DELETE FROM warns WHERE user_id = %s AND id_group = %s"
+class Sql_reputation:
+    SQL_Select = "SELECT rep FROM user_rep WHERE user_id = %s  AND chat_id = %s"
+    SQL_Insert = "INSERT IGNORE INTO user_rep(user_id,chat_id,rep) VALUES (%s,%s,%s)"
+    SQL_Update = "UPDATE user_rep SET rep = rep + 1 WHERE user_id = %s  AND chat_id = %s"

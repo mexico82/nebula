@@ -3,6 +3,9 @@ from core.sql.db_connect import Connection
 from core.sql.commands_sql import Sql_Warn
 from core.utility.strings import str_service
 
+MIN_WARN = '1'
+MAX_WARN = '3'
+
 @core.decorators.admin.user_admin
 @core.decorators.delete.init
 def init(update,context):
@@ -24,7 +27,7 @@ def init(update,context):
         bot.send_message(update.message.chat_id,str_service.WARN_START
         .format(usr_format))
         return True
-    elif row[0] == '1':
+    elif row[0] == MIN_WARN:
         Connection().cur.execute(Sql_Warn.SQL_Upd_Warn,(usr,chat))
         bot.send_message(update.message.chat_id,str_service.WARN_1
         .format(usr_format))
@@ -32,7 +35,7 @@ def init(update,context):
         Connection().cur.execute(Sql_Warn.SQL_Upd_Warn,(usr,chat))
         bot.send_message(update.message.chat_id,str_service.WARN_2
         .format(usr_format))
-    elif row[0] == '3':
+    elif row[0] == MAX_WARN:
         bot.send_message(update.message.chat_id,str_service.WARN_END
         .format(usr_format))
         bot.kick_chat_member(update.message.chat_id,update.message.reply_to_message.from_user.id)
