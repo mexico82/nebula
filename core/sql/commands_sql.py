@@ -32,6 +32,7 @@ class Sql_Warn:
     SQL_Upd_Warn = "UPDATE warns SET warn_count = warn_count + 1 WHERE user_id = %s  AND id_group = %s"
     SQL_Del_Warn = "DELETE FROM warns WHERE user_id = %s AND id_group = %s"
 class Sql_reputation:
-    SQL_Select = "SELECT rep FROM user_rep WHERE user_id = %s  AND chat_id = %s"
-    SQL_Insert = "INSERT IGNORE INTO user_rep(user_id,chat_id,rep) VALUES (%s,%s,%s)"
+    SQL_Select = "SELECT * FROM user_rep WHERE user_id = %s  AND chat_id = %s"
+    SQL_Insert = "INSERT INTO user_rep(user_id,chat_id,rep) VALUES (%s,%s,%s)"
     SQL_Update = "UPDATE user_rep SET rep = rep + 1 WHERE user_id = %s  AND chat_id = %s"
+    SQL_Update2 = "UPDATE user_rep SET rep = rep - 1 WHERE user_id = %s  AND chat_id = %s"

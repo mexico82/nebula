@@ -12,15 +12,20 @@ def init(update, context):
         usr = str(update.message.reply_to_message.from_user.id)
         msg_usr = update.message.reply_to_message.from_user
         usr_format = "@"+msg_usr.username or msg_usr.first_name
+        usr_control = str(update.effective_user.id)
         query = Sql_reputation.SQL_Select
         dbsel.cur.execute(query,(usr,chat))
-        row = dbsel.cur.fetchone()
-        if row is not None:
-            dbup = Connection()
-            sql = Sql_reputation.SQL_Update
-            dbup.cur.execute(sql,(usr,chat))
-            message = "Hai votato {} !".format(usr_format)
-            bot.send_message(chat,message,parse_mode='HTML')
+        rows = dbsel.cur.fetchall()
+        if rows:
+            for score in rows:
+                if score[1] == usr_control:
+                    bot.send_message(chat, "Non puoi votarti da solo!")
+                elif score[1] != usr_control:
+                    dbup = Connection()
+                    sql = Sql_reputation.SQL_Update
+                    dbup.cur.execute(sql,(usr,chat))
+                    message = "Hai votato {} !".format(usr_format)
+                    bot.send_message(chat,message,parse_mode='HTML')
         else:
             bot.send_message(chat, "L'utente non è abilitato alle votazioni!")
     except:

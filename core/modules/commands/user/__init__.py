@@ -15,8 +15,9 @@ __all__ = [
            "joke",
            "get_staff",
            "gdpr",
-           "user_rep",
-           "user_rep_view"
+           "vote",
+           "downvote",
+           "score"
            ]
 
 from core.modules.commands.user import *

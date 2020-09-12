@@ -69,8 +69,9 @@ def commandHandler(dsp):
     FUNCTION(CMH("joke", usr.joke.init))
     FUNCTION(CMH("staff", usr.get_staff.init))
     FUNCTION(CMH("gdpr", usr.gdpr.init))
-    FUNCTION(CMH("rep", usr.user_rep.init))
-    FUNCTION(CMH("status", usr.user_rep_view.init))
+    FUNCTION(CMH("vote", usr.vote.init))
+    FUNCTION(CMH("downvote", usr.downvote.init))
+    FUNCTION(CMH("score", usr.score.init))
 
 #########################################################################
 #                           ADMIN COMMAND                               #
