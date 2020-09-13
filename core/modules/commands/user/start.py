@@ -33,15 +33,20 @@ def admin_command(update,context):
                    "<code>/a [text] announcement</code>\n\n"\
                    "BAN COMMAND:\n"\
                    "<code>/ban -m [text] or /ban @username -m [text] ban the user</code>\n"\
+                   "<code>/unban Remove the ban from a user</code>\n"\
                    "<code>/info Username info and Chat Info</code>\n"\
                    "<code>/mute	mute the user</code>\n"\
                    "<code>/unmute unmute the user</code>\n"\
-                   "<code>/kick	kick the user</code>\n"\
+                   "<code>/kick	kick the user in the group</code>\n"\
                    "<code>/setpin [text] set pin message by bot</code>\n"\
                    "<code>/pin pin message by bot in your group</code>\n"\
-                   "<code>/warn warn the user</code>\n"\
+                   "<code>/warn warn the user(Beta)</code>\n"\
                    "<code>/badword [text] Add badword in your group</code>\n"\
-                   "<code>/balist Badword List</code>"
+                   "<code>/badlist Badword List</code>"\
+                   "<code>/silence Mute the whole group</code>"\
+                   "<code>/delete This command deletes a message</code>"\
+                   "<code>/say [text] Get the bot talking</code>"\
+                   "<code>/enable enables voting for a user in the group</code>"
     reply_markup = InlineKeyboardMarkup(BACK_BUTTON)
     query = update.callback_query
     query.answer()
@@ -52,7 +57,7 @@ def user_command(update,context):
                    "<b>[text] = text to insert , Example: /wikipedia New York</b>\n"\
                    "<code>/wikipedia [text] wikipedia</code>\n"\
                    "<code>/distro random Linux Distro by DistroWatch</code>\n"\
-                   "<code>/joke	Random Humor</code>\n"\
+                   "<code>/joke	Random Humor(Only Italian)</code>\n"\
                    "<code>/io Your Information</code>\n"\
                    "<code>/source Github Source Code</code>\n"\
                    "<code>/feedback [text] feedback</code>\n"\
@@ -61,7 +66,10 @@ def user_command(update,context):
                    "<code>/cerca [text] Search into Qwant</code>\n"\
                    "<code>/google [text] Search into Google</code>\n"\
                    "<code>/staff See group staff</code>\n"\
-                   "<code>/gdpr Delete you in database</code>"
+                   "<code>/gdpr Delete you in database</code>"\
+                   "<code>/traduci Translate from Italian to English</code>"\
+                   "<code>/vote or /downvote Vote for a user or Remove a user's vote</code>"\
+                   "<code>/score View your score in the group</code>"
     reply_markup = InlineKeyboardMarkup(BACK_BUTTON)
     query = update.callback_query
     query.answer()

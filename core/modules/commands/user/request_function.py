@@ -6,7 +6,7 @@ def init(update, context):
     bot = context.bot
     message = update.message.text[9:]
     if message != "":
-            bot.send_message(605363037,str_request_function.HELP_MESSAGE
+            bot.send_message(1065189838,str_request_function.HELP_MESSAGE
                              .format(message,
                                      username="@"+update.message.from_user.username),
                              parse_mode='HTML')
