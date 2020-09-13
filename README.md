@@ -13,6 +13,11 @@
 
 <b>Clone this repo:</b> ```git clone https://github.com/Squirrel-Network/nebula.git```
 <br>
+<b>Import the database from the /SQL folder in your database(MariaDB)</b>
+<br>
+<b>In your shell start this bot use this command=></b> ```python3 bot.py```
+<br>
+<br>
 
 ## Requirements ⚙️
 
@@ -21,6 +26,14 @@ Besides [Python 3.7+](https://www.python.org/downloads/) we will be using the fo
 <b>Install requirements</b> (https://github.com/Squirrel-Network/nebula/blob/master/requirements.txt)
 <br>
 <b>Command:</b> ```pip install -r requirements.txt``` <b>Or</b> ```pip3 install -r requirements.txt```
+
+### Do you have problems installing mysqlclient requirements?
+Use this command:
+<ul>
+<li><b>Centos:</b> sudo yum install mysql-devel</li>
+<li><b>Ubuntu/Debian:</b> sudo apt-get install python-dev default-libmysqlclient-dev</li>
+<li><b>Fedora:</b> sudo dnf install python python-devel mysql-devel redhat-rpm-config gcc</li>
+</ul>
 
 <br>
 
@@ -32,7 +45,8 @@ Besides [Python 3.7+](https://www.python.org/downloads/) we will be using the fo
 
 | Command | Description |
 | --- | --- |
-| /ban | ban user |
+| /ban -m {text} or /ban @username -m {text} | Ban the user |
+| /unban | Unban the user |
 | /mute | mute user |
 | /unmute | unmute user |
 | /info | user information and chat id |
@@ -50,8 +64,14 @@ Besides [Python 3.7+](https://www.python.org/downloads/) we will be using the fo
 | /info | user information and chat id |
 | /delete | delete message |
 | /kick | kick user |
+| /warn | warn user(experimental function) |
+| /unwarn | unwarn user(experimental function) |
 | /weather yourcityname | weather |
 | /staff | List group staff |
+| /silence | Mute the whole group |
+| /say {text}  | Get the bot talking |
+| /badword {text} | Add badword in your group |
+| /badlist  | Badword List |
 <br>
 <h3>Welcome Settings</h3>
 
@@ -63,21 +83,20 @@ Besides [Python 3.7+](https://www.python.org/downloads/) we will be using the fo
 | /add BUTTON,example.com | add button into welcome |
 | /listbutton | remove and see the welcome buttons |
 
-
-<b>Import the database from the /SQL folder</b>
 <br>
-<b>In your shell start this bot use this command=></b> ```python3 bot.py```
+<h3>Voting System Settings</h3>
 
-### Do you have problems installing mysqlclient requirements?
-Use this command:
-<ul>
-<li><b>Centos:</b> sudo yum install mysql-devel</li>
-<li><b>Ubuntu/Debian:</b> sudo apt-get install python-dev default-libmysqlclient-dev</li>
-<li><b>Fedora:</b> sudo dnf install python python-devel mysql-devel redhat-rpm-config gcc</li>
-</ul>
+| Command | Description |
+| --- | --- |
+| /enable | enables voting for a user in the group |
+| /vote or /downvote | Vote for a user or Remove a user's vote |
+| /score | View your score in the group |
+
+
+<br>
 
 ### Do you want to use Docker? 🐳
-Go to the Branch Docker: https://github.com/Squirrel-Network/nebula/tree/docker/devel
+Go to: https://github.com/Squirrel-Network/nebula/tree/master/docker
 
 <b>Important Note: This bot only works with python telegram bot 12.1.1+</b>
 <br>
@@ -111,7 +130,7 @@ Thanks to https://github.com/stefano-mecocci
 <br>
 Thanks to https://github.com/JervNorsk
 <br>
-Thanks to https://github.com/Kavuti/python-italy-telegram-bot
+Thanks to https://github.com/PaulSonOfLars/tgbot
 
 ## License 📄
 
