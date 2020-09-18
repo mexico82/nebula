@@ -18,13 +18,16 @@ def init(update, context):
         rows = dbsel.cur.fetchall()
         if rows:
             for score in rows:
-                if score[1] == usr_control:
-                    bot.send_message(chat, "Non puoi votarti da solo!")
-                elif score[1] != usr_control:
+                if score[1] == usr_control.id:
+                    bot.send_message(chat, "Non puoi toglierti il voto da solo!")
+                elif score[1] != usr_control.id:
                     dbup = Connection()
                     sql = Sql_reputation.SQL_Update2
                     dbup.cur.execute(sql,(usr,chat))
-                    message = "Hai rimosso il voto a {} !".format(usr_format)
+                    message = '<a href="tg://user?id={userid}">{user}</a> ha rimossso il voto a {usr_vote} !'.format(
+                        userid=usr_control.id,
+                        user=update.effective_user.username or update.effective_user.first_name,
+                        usr_vote=usr_format)
                     bot.send_message(chat,message,parse_mode='HTML')
         else:
             bot.send_message(chat, "L'utente non è abilitato alle votazioni!")

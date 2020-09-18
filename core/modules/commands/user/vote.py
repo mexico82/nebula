@@ -24,7 +24,10 @@ def init(update, context):
                     dbup = Connection()
                     sql = Sql_reputation.SQL_Update
                     dbup.cur.execute(sql,(usr,chat))
-                    message = "Hai votato {} !".format(usr_format)
+                    message = '<a href="tg://user?id={userid}">{user}</a> hai votato {usr_vote} !'.format(
+                        userid=usr_control,
+                        user=update.effective_user.username or update.effective_user.first_name,
+                        usr_vote=usr_format)
                     bot.send_message(chat,message,parse_mode='HTML')
         else:
             bot.send_message(chat, "L'utente non è abilitato alle votazioni!")
