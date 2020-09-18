@@ -12,21 +12,21 @@ def init(update, context):
         usr = str(update.message.reply_to_message.from_user.id)
         msg_usr = update.message.reply_to_message.from_user
         usr_format = "@"+msg_usr.username or msg_usr.first_name
-        usr_control = update.effective_user
+        usr_control = str(update.effective_user.id)
         query = Sql_reputation.SQL_Select
         dbsel.cur.execute(query,(usr,chat))
         rows = dbsel.cur.fetchall()
         if rows:
             for score in rows:
                 if score[1] == usr_control.id:
-                    bot.send_message(chat, "Non puoi votarti da solo!")
+                    bot.send_message(chat, "Non puoi toglierti il voto da solo!")
                 elif score[1] != usr_control.id:
                     dbup = Connection()
                     sql = Sql_reputation.SQL_Update2
                     dbup.cur.execute(sql,(usr,chat))
                     message = '<a href="tg://user?id={userid}">{user}</a> ha rimossso il voto a {usr_vote} !'.format(
                         userid=usr_control.id,
-                        user=usr_control.username or usr_control.first_name,
+                        user=update.effective_user.username or update.effective_user.first_name,
                         usr_vote=usr_format)
                     bot.send_message(chat,message,parse_mode='HTML')
         else:
