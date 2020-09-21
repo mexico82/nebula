@@ -1,7 +1,6 @@
 import core.decorators
 from core.sql.db_connect import Connection
 from core.sql.commands_sql import Sql_Warn
-from core.utility.strings import str_service
 
 @core.decorators.admin.user_admin
 @core.decorators.delete.init

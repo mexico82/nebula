@@ -1,4 +1,3 @@
-import core.decorators
 from core.sql.db_connect import Connection
 from core.sql.commands_sql import Sql_reputation
 
