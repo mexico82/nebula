@@ -1,6 +1,5 @@
 import datetime
 import core.decorators
-from config import Config
 from core.sql.db_connect import Connection
 from core.sql.commands_sql import Sql_Superban
 from core.utility.strings import str_service

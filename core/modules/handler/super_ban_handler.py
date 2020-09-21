@@ -1,4 +1,3 @@
-from config import Config
 import core.decorators
 from core.sql.db_connect import Connection
 from core.sql.handler_sql import Sql_Super_Ban
