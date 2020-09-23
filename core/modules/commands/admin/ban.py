@@ -106,6 +106,7 @@ def ban(bot, chat, admin, user, options):
     bot.send_message(Config.LOG_CHANNEL,
         text="<b>UTENTE BANNATO!</b>\n"\
             "ID: {id}\n"\
+            "USERNAME: {username}\n"\
             "GRUPPO: {chat}\n"\
             "MOTIVO: {motivation}"
             .format(
